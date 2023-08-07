@@ -1,3 +1,4 @@
+import PostsTable from "@/components/PostsTable";
 import { usePostsStore } from "@/store/posts";
 import React from "react";
 
@@ -5,7 +6,8 @@ const Index: React.FC = () => {
     const posts = usePostsStore(({ posts }) => posts)
     return (
         <div>
-            {posts.map((post) => (
+            Posts Page
+            {/* {posts.map((post) => (
                 <div key={post.id}>
 
                     <h1>{post.title}</h1>
@@ -13,7 +15,8 @@ const Index: React.FC = () => {
                     <code>{post.id}</code>
                     <hr />
                 </div>
-            ))}
+            ))} */}
+            <PostsTable></PostsTable>
         </div>
     );
 }
