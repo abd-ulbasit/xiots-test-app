@@ -85,12 +85,12 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </ul>
             </nav>
             <ul className="md:flex flex-col md:flex-row md:items-center ">
-                <li className={`my-2 md:my-0 ${isCurrentPage('/') ? 'text-red-500' : 'text-white'}`}>
+                <li className={`my-2 md:my-0 ${isCurrentPage('/') ? 'text-red-500' : ''}`}>
                     <Link href="/" className="hover:text-gray-300 md:mx-4 block">
                         Home
                     </Link>
                 </li>
-                <li className={`my-2 md:my-0 ${isCurrentPage('/posts') ? 'text-red-500' : 'text-white'}`}>
+                <li className={`my-2 md:my-0 ${isCurrentPage('/posts') ? 'text-red-500' : ''}`}>
                     <Link href="/posts" className="hover:text-gray-300 md:mx-4 block">
                         Posts
                     </Link>
