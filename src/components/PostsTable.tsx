@@ -7,7 +7,7 @@ export default function PostsTable() {
     const [posts, deletePost, setPosts] = usePostsStore((state) => [state.posts, state.deletePost, state.setPosts])
     const pagination = usePagination({
         initialPage: 1,
-        total: posts.length / NO_OF_RECORDS_PER_PAGE,
+        total: Math.ceil(posts.length / NO_OF_RECORDS_PER_PAGE),
     });
     //use pagination to show 10 records per page
     // and render the buttons on the bottom that show current page and total pages and when clicked should change the page no. and records on page
