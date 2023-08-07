@@ -26,7 +26,7 @@ export default function PostsTable() {
                         <tr key={post.id}>
                             <td className="border px-4 py-2">{post.id}</td>
                             <td className="border px-4 py-2">{post.title}</td>
-                            <td className="border px-4 py-2">{post.body}</td>
+                            <td className="border px-4 py-2 line-clamp-1 ">{post.body}</td>
                         </tr>
                     ))}
                 </tbody>
