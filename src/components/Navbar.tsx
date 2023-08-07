@@ -1,14 +1,25 @@
+import { usePostsStore } from '@/store/posts';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface NavbarProps {
     // Add any props you might need for the navbar
 }
 
 const Navbar: React.FC<NavbarProps> = () => {
-    const [showLinks, setShowLinks] = useState(false);
 
+    const [showLinks, setShowLinks] = useState(false);
+    const setPosts = usePostsStore(state => state.setPosts)
+    //fetch posts and store then as posts
+    useEffect(() => {
+        const fetchPosts = async () => {
+            const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+            const newPosts = (await res.json()) as PostType[];
+            setPosts(newPosts);
+        };
+        fetchPosts();
+    }, [])
     const router = useRouter();
 
     const handleToggle = () => {
