@@ -79,7 +79,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                         Home
                     </Link>
                 </li>
-                <li className={`my-2 md:my-0 ${isCurrentPage('posts') ? 'text-red-500' : 'text-white'}`}>
+                <li className={`my-2 md:my-0 ${isCurrentPage('/posts') ? 'text-red-500' : 'text-white'}`}>
                     <Link href="/posts" className="hover:text-gray-300 md:mx-4 block">
                         Posts
                     </Link>
