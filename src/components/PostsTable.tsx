@@ -13,9 +13,6 @@ export default function PostsTable() {
         total: no_of_pages,
     });
     const [openModalForPost, setOpenModalForPost] = useState<PostType | null>(null);
-    // const [postToUpate, setPostToUpdate] = useState<PostType | null>(null)
-    //use pagination to show 10 records per page
-    // and render the buttons on the bottom that show current page and total pages and when clicked should change the page no. and records on page
     const handleDeletePost = (id: number) => {
         deletePost(id)
         fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
@@ -36,23 +33,12 @@ export default function PostsTable() {
         }).catch((err) => console.log(err)
         )
     }
-    // const handleEditPost = (post: PostType) => {
-    //     setPostToUpdate(post)
-    // }
-    const openTheModal = (open: () => void, post: PostType) => {
-        open()
-        // setPostToUpdate(post)
-    }
-
     const handleOpenModal = (post: PostType) => {
         setOpenModalForPost(post);
     }
 
     return (
         <div>
-            {/* {postToUpate &&
-                <UpdatePostModal post={postToUpate} openModal={openTheModal, postToUpate} ></UpdatePostModal>
-            } */}
             <table className="table-auto w-4/5">
                 <thead>
                     <tr className='text-start'>
@@ -66,7 +52,6 @@ export default function PostsTable() {
                     {posts
                         .slice((pagination.active - 1) * (NO_OF_RECORDS_PER_PAGE), (pagination.active) * (NO_OF_RECORDS_PER_PAGE))
                         .map((post) => {
-                            // console.log(pagination.active)
                             return (
 
                                 <tr key={post.id} className='border'>
@@ -89,12 +74,11 @@ export default function PostsTable() {
                                             Delete
                                         </button>
                                     </td>
-                                    {/* <UpdatePostModal post={post} openModal={openTheModal} ></UpdatePostModal> */}
                                 </tr>
 
                             )
                         })}
-                    {openModalForPost && <UpdatePostModal post={openModalForPost} />}
+                    {openModalForPost && <UpdatePostModal post={openModalForPost} close={setOpenModalForPost} />}
                 </tbody>
             </table>
             <div className="flex justify-center">
