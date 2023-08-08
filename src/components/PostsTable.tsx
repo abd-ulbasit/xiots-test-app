@@ -4,40 +4,25 @@ import UpdatePostModal from './UpdatePostModal';
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import DeletePostModal from './DeletePostModal';
 
 const NO_OF_RECORDS_PER_PAGE = 5;
 
 export default function PostsTable() {
     const router = useRouter();
-    const [posts, deletePost, setPosts] = usePostsStore((state) => [state.posts, state.deletePost, state.setPosts])
+    const posts = usePostsStore((state) => state.posts)
     const no_of_pages = Math.ceil(posts.length / NO_OF_RECORDS_PER_PAGE)
     const pagination = usePagination({
         initialPage: 1,
         total: no_of_pages,
     });
-    const [openModalForPost, setOpenModalForPost] = useState<PostType | null>(null);
-    const handleDeletePost = (id: number) => {
-        deletePost(id)
-        fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-            method: 'DELETE',
-        }).then((res) => {
-            if (res.ok) {
-                //! Should I update the posts on client before the server says Ok or should I wait for the server
-                console.log({ res });
-                //make a fetch request to get new data
-                //BTW this server does not delete the post so refetching is causing it to again appear in the post list. 
-                //! SO for now, discarding this fetch
-                // fetch('https://jsonplaceholder.typicode.com/posts').then((res) => res.json().then((data: PostType[]) => setPosts(data))).catch((err) => {
-                //     console.log({ err });
-
-                // });
-            }
-
-        }).catch((err) => console.log(err)
-        )
+    const [openModalForEditPost, setOpenModalForEditPost] = useState<PostType | null>(null);
+    const [openModalForDeletePost, setOpenModalForDeletePost] = useState<number | null>(null);
+    const handleOpenEditModal = (post: PostType) => {
+        setOpenModalForEditPost(post);
     }
-    const handleOpenModal = (post: PostType) => {
-        setOpenModalForPost(post);
+    const handleOpenDeleteModal = (id: number) => {
+        setOpenModalForDeletePost(id);
     }
     const gotoPostPage = (id: number) => {
         router.push(`/posts/${id}`)
@@ -71,10 +56,10 @@ export default function PostsTable() {
                                         </p>
                                     </td>
                                     <td className="flex">
-                                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={(e) => { e.stopPropagation(); handleOpenModal(post) }} >
+                                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={(e) => { e.stopPropagation(); handleOpenEditModal(post) }} >
                                             Edit
                                         </button>
-                                        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={(e) => { e.stopPropagation(); handleDeletePost(post.id) }}>
+                                        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={(e) => { e.stopPropagation(); handleOpenDeleteModal(post.id) }}>
                                             Delete
                                         </button>
                                     </td>
@@ -82,7 +67,8 @@ export default function PostsTable() {
 
                             )
                         })}
-                    {openModalForPost && <UpdatePostModal post={openModalForPost} close={setOpenModalForPost} />}
+                    {openModalForEditPost && <UpdatePostModal post={openModalForEditPost} close={setOpenModalForEditPost} />}
+                    {openModalForDeletePost && <DeletePostModal id={openModalForDeletePost} close={setOpenModalForDeletePost} />}
                 </tbody>
             </table>
             <div className="flex justify-center">
