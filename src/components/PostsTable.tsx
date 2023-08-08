@@ -2,10 +2,13 @@ import { usePostsStore } from '@/store/posts';
 import { usePagination } from '@mantine/hooks';
 import UpdatePostModal from './UpdatePostModal';
 import { useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const NO_OF_RECORDS_PER_PAGE = 5;
 
 export default function PostsTable() {
+    const router = useRouter();
     const [posts, deletePost, setPosts] = usePostsStore((state) => [state.posts, state.deletePost, state.setPosts])
     const no_of_pages = Math.ceil(posts.length / NO_OF_RECORDS_PER_PAGE)
     const pagination = usePagination({
@@ -36,7 +39,9 @@ export default function PostsTable() {
     const handleOpenModal = (post: PostType) => {
         setOpenModalForPost(post);
     }
-
+    const gotoPostPage = (id: number) => {
+        router.push(`/posts/${id}`)
+    }
     return (
         <div>
             <table className="table-auto w-4/5">
@@ -53,8 +58,7 @@ export default function PostsTable() {
                         .slice((pagination.active - 1) * (NO_OF_RECORDS_PER_PAGE), (pagination.active) * (NO_OF_RECORDS_PER_PAGE))
                         .map((post) => {
                             return (
-
-                                <tr key={post.id} className='border'>
+                                <tr className='border cursor-pointer' key={post.id} onClick={() => gotoPostPage(post.id)}>
                                     <td className="">{post.id}</td>
                                     <td className="overflow-hidden">
                                         <p className='line-clamp-1'>
@@ -67,10 +71,10 @@ export default function PostsTable() {
                                         </p>
                                     </td>
                                     <td className="flex">
-                                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleOpenModal(post)} >
+                                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={(e) => { e.stopPropagation(); handleOpenModal(post) }} >
                                             Edit
                                         </button>
-                                        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDeletePost(post.id)}>
+                                        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={(e) => { e.stopPropagation(); handleDeletePost(post.id) }}>
                                             Delete
                                         </button>
                                     </td>
@@ -97,7 +101,7 @@ export default function PostsTable() {
                     Next
                 </button>
             </div>
-        </div>
+        </div >
     );
 
 
