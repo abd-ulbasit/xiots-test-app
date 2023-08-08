@@ -7,7 +7,7 @@ interface NavbarProps {
     // Add any props you might need for the navbar
 }
 
-const Navbar: React.FC<NavbarProps> = () => {
+const MainNavbar: React.FC<NavbarProps> = () => {
 
     const [showLinks, setShowLinks] = useState(false);
     const setPosts = usePostsStore(state => state.setPosts)
@@ -101,4 +101,4 @@ const Navbar: React.FC<NavbarProps> = () => {
     );
 };
 
-export default Navbar;
+export default MainNavbar;

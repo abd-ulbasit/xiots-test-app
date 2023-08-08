@@ -1,8 +1,10 @@
 import PostsTable from "@/components/PostsTable";
 import { usePostsStore } from "@/store/posts";
-import React from "react";
+import React, { ReactNode } from "react";
+import { NextPageWithLayout } from "../_app";
+import PostsLayout from "@/components/PostsLayout";
 
-const Index: React.FC = () => {
+const Index: NextPageWithLayout = () => {
     const posts = usePostsStore(({ posts }) => posts)
     return (
         <div>
@@ -20,5 +22,15 @@ const Index: React.FC = () => {
         </div>
     );
 }
+
+Index.getLayout = function (page: ReactNode): ReactNode {
+
+    return <div>
+        <PostsLayout></PostsLayout>
+        {page}
+    </div>
+}
+
+
 
 export default Index;

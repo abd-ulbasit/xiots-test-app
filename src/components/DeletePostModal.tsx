@@ -44,7 +44,7 @@ function DeletePostModal({ id, close: closeModel }: { id: number, close: Dispatc
             <Modal opened={opened} onClose={handleCloseModal} title="Delete Post" size={"40rem"} centered>
                 Are you sure you want to delete this post?
                 <button onClick={() => handleDeletePost(id)}>Delete</button>
-                <button onClick={close}>Close</button>
+                <button onClick={handleCloseModal}>Close</button>
             </Modal>
 
         </>
