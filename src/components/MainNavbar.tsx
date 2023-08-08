@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { FaHome, FaMailBulk, FaPhoneVolume } from "react-icons/fa"
 import { FiPhone } from "react-icons/fi"
 interface NavbarProps {
-    // Add any props you might need for the navbar
+    // Add props for the navbar
 }
 
 const MainNavbar: React.FC<NavbarProps> = () => {
@@ -53,20 +53,20 @@ const MainNavbar: React.FC<NavbarProps> = () => {
                         className={`  md:flex flex-row hidden flex-grow md:items-center  gap-3 justify-between`}
                     >
                         <div className='flex-row flex items-center gap-2'>
-                            <div className='text-yellow-300 p-2 border-yellow-300 rounded-full border'>
+                            <div className='text-yellow-400 p-2 border-yellow-400 rounded-full border'>
                                 <FaHome></FaHome>
                             </div>
                             <div className='flex flex-col gap-1'>
-                                <div className='text-yellow-300 font-bold'> Address</div>
+                                <div className='text-yellow-400 font-bold'> Address</div>
                                 <div className='text-gray-800 text-sm'> Example England</div>
                             </div>
                         </div>
                         <div className='flex-row flex items-center gap-2'>
-                            <div className='text-yellow-300 p-2 border-yellow-300 rounded-full border'>
+                            <div className='text-yellow-400 p-2 border-yellow-400 rounded-full border'>
                                 <FaMailBulk></FaMailBulk>
                             </div>
                             <div className='flex flex-col gap-1'>
-                                <div className='text-yellow-300 font-bold'>Email Us</div>
+                                <div className='text-yellow-400 font-bold'>Email Us</div>
                                 <div className='text-gray-800 text-sm'> example@booking.com</div>
                             </div>
                         </div>
@@ -85,42 +85,42 @@ const MainNavbar: React.FC<NavbarProps> = () => {
                         } md:hidden flex flex-col  md:items-center px-6 gap-3`}
                 >
                     <div className='flex-row flex items-center gap-2'>
-                        <div className='text-yellow-300 p-2 border-yellow-300 rounded-full border'>
+                        <div className='text-yellow-400 p-2 border-yellow-400 rounded-full border'>
                             <FaHome></FaHome>
                         </div>
                         <div className='flex flex-col gap-1'>
-                            <div className='text-yellow-300 font-bold'> Address</div>
+                            <div className='text-yellow-400 font-bold'> Address</div>
                             <div className='text-gray-800 text-sm'> Example England</div>
                         </div>
                     </div>
                     <div className='flex-row flex items-center gap-2'>
-                        <div className='text-yellow-300 p-2 border-yellow-300 rounded-full border'>
+                        <div className='text-yellow-400 p-2 border-yellow-400 rounded-full border'>
                             <FaMailBulk></FaMailBulk>
                         </div>
                         <div className='flex flex-col gap-1'>
-                            <div className='text-yellow-300 font-bold'>Email Us</div>
+                            <div className='text-yellow-400 font-bold'>Email Us</div>
                             <div className='text-gray-800 text-sm'> example@booking.com</div>
                         </div>
                     </div>
                     <div className='flex-row flex items-center gap-2'>
-                        <div className='text-yellow-300 p-2 border-yellow-300 rounded-full border'>
+                        <div className='text-yellow-400 p-2 border-yellow-400 rounded-full border'>
                             <FiPhone></FiPhone>
                         </div>
                         <div className='flex flex-col gap-1'>
-                            {/* <div className='text-yellow-300'> Address</div>
+                            {/* <div className='text-yellow-400'> Address</div>
                             <div className='text-gray-800 text-sm'> Example England</div> */}
                             <p className='text-gray-800 text-sm font-bold'>+92-321343241</p>
                         </div>
                     </div>
                 </div>
             </nav>
-            <ul className="md:flex hidden flex-row  w-full h-16 items-center gap-3 bg-slate-800 ">
-                <li className={` ${isCurrentPage('/') ? 'text-red-500' : ''}`}>
+            <ul className="md:flex hidden flex-row px-6 w-full h-16 items-center gap-3 bg-slate-800 ">
+                <li className={` ${isCurrentPage('/') ? 'text-yellow-400' : ''}`}>
                     <Link href="/" className="hover:text-gray-300 md:mx-4 block">
                         Home
                     </Link>
                 </li>
-                <li className={` ${isCurrentPage('/posts') ? 'text-red-500' : ''}`}>
+                <li className={` ${isCurrentPage('/posts') ? 'text-yellow-400' : ''}`}>
                     <Link href="/posts" className="hover:text-gray-300 md:mx-4 block">
                         Posts
                     </Link>
