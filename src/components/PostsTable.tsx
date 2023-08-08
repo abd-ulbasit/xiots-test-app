@@ -1,5 +1,7 @@
 import { usePostsStore } from '@/store/posts';
 import { usePagination } from '@mantine/hooks';
+import UpdatePostModal from './UpdatePostModal';
+import { useState } from 'react';
 
 const NO_OF_RECORDS_PER_PAGE = 5;
 
@@ -10,6 +12,8 @@ export default function PostsTable() {
         initialPage: 1,
         total: no_of_pages,
     });
+    const [openModalForPost, setOpenModalForPost] = useState<PostType | null>(null);
+    // const [postToUpate, setPostToUpdate] = useState<PostType | null>(null)
     //use pagination to show 10 records per page
     // and render the buttons on the bottom that show current page and total pages and when clicked should change the page no. and records on page
     const handleDeletePost = (id: number) => {
@@ -32,8 +36,23 @@ export default function PostsTable() {
         }).catch((err) => console.log(err)
         )
     }
+    // const handleEditPost = (post: PostType) => {
+    //     setPostToUpdate(post)
+    // }
+    const openTheModal = (open: () => void, post: PostType) => {
+        open()
+        // setPostToUpdate(post)
+    }
+
+    const handleOpenModal = (post: PostType) => {
+        setOpenModalForPost(post);
+    }
+
     return (
         <div>
+            {/* {postToUpate &&
+                <UpdatePostModal post={postToUpate} openModal={openTheModal, postToUpate} ></UpdatePostModal>
+            } */}
             <table className="table-auto w-4/5">
                 <thead>
                     <tr className='text-start'>
@@ -63,17 +82,19 @@ export default function PostsTable() {
                                         </p>
                                     </td>
                                     <td className="flex">
-                                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleOpenModal(post)} >
                                             Edit
                                         </button>
                                         <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDeletePost(post.id)}>
                                             Delete
                                         </button>
                                     </td>
+                                    {/* <UpdatePostModal post={post} openModal={openTheModal} ></UpdatePostModal> */}
                                 </tr>
 
                             )
                         })}
+                    {openModalForPost && <UpdatePostModal post={openModalForPost} />}
                 </tbody>
             </table>
             <div className="flex justify-center">
