@@ -1,11 +1,14 @@
 import Image from "next/image"
-import { FaDollarSign } from "react-icons/fa"
+import { SlBadge } from "react-icons/sl"
+import { FaDollarSign, FaPlay } from "react-icons/fa"
+import { RiEmotionHappyLine } from "react-icons/ri"
 export default function Home() {
   return (
     <main
     >
       <HeroSection></HeroSection>
       <Features></Features>
+      <FeedBack></FeedBack>
     </main>
   )
 }
@@ -75,5 +78,47 @@ function Features() {
         <div className="text-sm text-gray-800">A more recently with desktop softy like aldus page maker.</div>
       </div>
     </div>
+  </div>
+}
+function FeedBack() {
+  return <div className="flex flex-col md:flex-row p-4">
+    <div className="w-3/5" >
+      <p>Like always. Like never before.</p>
+      <span className="block bg-yellow-400 w-8 h-1" ></span>
+      <h3 className="text-2xl">Bespoke Software & Digital Transformation.</h3>
+      <p>By automating processes and tasks, businesses can reduce costs and improve productivity.
+        Additionally, custom software tailored to the specific needs of a business can give them a
+        significant advantage over their competitors.</p>
+      <p>Our software development agency has a team of experienced and skilled professionalswho can
+        create custom software solutions for your business. We understand the unique requirements
+        of each business and create tailor-made solutions that can help them achieve their goals.</p>
+      <button className="bg-yellow-400 px-10 py-2 rounded-none text-white" >Get Quote</button>
+      {/* Numbers */}
+      <div className="flex" >
+        <div className="flex"  >
+          <div className="relative">
+            <div className="absolute px-2 border ">500</div>
+            <div className="border p-4 rounded-full text-yellow-400"><RiEmotionHappyLine></RiEmotionHappyLine></div>
+
+          </div>
+          <div></div>
+
+        </div>
+      </div>
+    </div>
+    {/* Div For Images */}
+    <div className="w-2/5">
+      <div className="relative">
+        <Image src="/images/about-style-fimg.jpg" alt="numbes" className="rounded-full" width={400} height={400}>
+        </Image>
+        <div className="absolute w-12 h-12 rounded-full bg-white text-yellow-400 top-1/2 right-1/2 flex
+         items-center justify-center "><span className="scale-125"><FaPlay></FaPlay></span></div>
+        <div className="absolute w-40 h-40 rounded-full bg-yellow-400 -bottom-16 right-1/4 border-4 text-white">
+          <div><SlBadge></SlBadge></div>
+          <p>Won Award In Year 2023</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 }

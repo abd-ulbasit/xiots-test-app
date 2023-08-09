@@ -50,7 +50,7 @@ const MainNavbar: React.FC<NavbarProps> = () => {
                         &#9776;
                     </button>
                     <div
-                        className={`  md:flex flex-row hidden flex-grow md:items-center  gap-3 justify-between`}
+                        className={`  md:flex flex-row hidden flex-grow md:items-center  gap-3 justify-between `}
                     >
                         <div className='flex-row flex items-center gap-2'>
                             <div className='text-yellow-400 p-2 border-yellow-400 rounded-full border'>
@@ -102,7 +102,7 @@ const MainNavbar: React.FC<NavbarProps> = () => {
                             <div className='text-gray-800 text-sm'> example@booking.com</div>
                         </div>
                     </div>
-                    <div className='flex-row flex items-center gap-2'>
+                    <div className='flex-row flex items-center gap-2 pb-2'>
                         <div className='text-yellow-400 p-2 border-yellow-400 rounded-full border'>
                             <FiPhone></FiPhone>
                         </div>
