@@ -26,12 +26,12 @@ export default function Services() {
                 </div>
                 <div className=" m-2 flex flex-col border" >
                     <div className="w-full bg-zinc-100 p-3" >
-                        <Image src="/images/cocktail.png" className=" mx-auto" width={50} height={50} alt="cocktail" />
+                        <Image src="/images/plane.png" className=" mx-auto" width={50} height={50} alt="cocktail" />
                     </div>
 
                     <div className="flex flex-col items-center text-center p-10  gap-2">
                         <h3>
-                            Resturants
+                            Airports
                         </h3>
                         <p className="text-xs text-gray-500" >A more recently with desktop softy like aldus page maker.</p>
                     </div>
@@ -39,12 +39,12 @@ export default function Services() {
                 </div>
                 <div className=" m-2 flex flex-col border" >
                     <div className="w-full bg-zinc-100 p-3" >
-                        <Image src="/images/cocktail.png" className=" mx-auto" width={50} height={50} alt="cocktail" />
+                        <Image src="/images/hospital.png" className=" mx-auto" width={50} height={50} alt="Hospitals" />
                     </div>
 
                     <div className="flex flex-col items-center text-center p-10  gap-2">
                         <h3>
-                            Resturants
+                            Hospitals
                         </h3>
                         <p className="text-xs text-gray-500" >A more recently with desktop softy like aldus page maker.</p>
                     </div>
@@ -52,12 +52,12 @@ export default function Services() {
                 </div>
                 <div className=" m-2 flex flex-col border" >
                     <div className="w-full bg-zinc-100 p-3" >
-                        <Image src="/images/cocktail.png" className=" mx-auto" width={50} height={50} alt="cocktail" />
+                        <Image src="/images/trees.png" className=" mx-auto" width={50} height={50} alt="beaches" />
                     </div>
 
                     <div className="flex flex-col items-center text-center p-10  gap-2">
                         <h3>
-                            Resturants
+                            Beaches
                         </h3>
                         <p className="text-xs text-gray-500" >A more recently with desktop softy like aldus page maker.</p>
                     </div>
@@ -65,12 +65,12 @@ export default function Services() {
                 </div>
                 <div className=" m-2 flex flex-col border" >
                     <div className="w-full bg-zinc-100 p-3" >
-                        <Image src="/images/cocktail.png" className=" mx-auto" width={50} height={50} alt="cocktail" />
+                        <Image src="/images/wallet.png" className=" mx-auto" width={50} height={50} alt="cocktail" />
                     </div>
 
                     <div className="flex flex-col items-center text-center p-10  gap-2">
                         <h3>
-                            Resturants
+                            Shopping Malls
                         </h3>
                         <p className="text-xs text-gray-500" >A more recently with desktop softy like aldus page maker.</p>
                     </div>
@@ -78,12 +78,12 @@ export default function Services() {
                 </div>
                 <div className=" m-2 flex flex-col border" >
                     <div className="w-full bg-zinc-100 p-3" >
-                        <Image src="/images/cocktail.png" className=" mx-auto" width={50} height={50} alt="cocktail" />
+                        <Image src="/images/camera.png" className=" mx-auto" width={50} height={50} alt="cocktail" />
                     </div>
 
                     <div className="flex flex-col items-center text-center p-10  gap-2">
                         <h3>
-                            Resturants
+                            Wedding Parties
                         </h3>
                         <p className="text-xs text-gray-500" >A more recently with desktop softy like aldus page maker.</p>
                     </div>
