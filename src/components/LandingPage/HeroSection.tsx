@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { FiChevronsRight } from "react-icons/fi"
 export default function HeroSection() {
     return (
         <div className="flex  flex-col items-center justify-center relative  overflow-x-hidden">
@@ -17,7 +18,8 @@ export default function HeroSection() {
                     <div className="self-center md:block hidden ">
                         <p>Free changes for life</p>
                         <h1 className="text-5xl font-semibold mb-4">Hand-Made Website For Your Bussiness</h1>
-                        <button>BookCall</button>
+                        <button className="bg-yellow-400 px-8 py-3 rounded-none text-black w-40 z-10 flex items-center gap-1"> BookCall
+                            <FiChevronsRight className="inline"></FiChevronsRight></button>
                     </div>
                     <div className="w-full md:w-auto items-center " >
                         <Image src="/images/hero.svg" className="scale-125 sm:scale-105" alt="hero" width={900} height={900} priority  ></Image>
