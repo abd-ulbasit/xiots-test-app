@@ -5,6 +5,10 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import DeletePostModal from './DeletePostModal';
+import { FiEdit } from 'react-icons/fi';
+import { RiDeleteBin5Line, RiDeleteBinLine } from 'react-icons/ri';
+import { Input } from '@mantine/core';
+import { BsSearch } from 'react-icons/bs';
 
 const NO_OF_RECORDS_PER_PAGE = 5;
 
@@ -28,8 +32,18 @@ export default function PostsTable() {
         router.push(`/posts/${id}`)
     }
     return (
-        <div>
-            <table className="table-auto w-4/5">
+        <div className='shadow-md p-4 border rounded-lg' >
+            <div className='flex justify-between text-center p-2'>
+                <h3>Posts</h3>
+                <Input
+                    icon={<BsSearch />}
+                    placeholder="Search.."
+                    radius="md"
+                />
+
+            </div>
+            <hr />
+            <table className="table-auto w-full">
                 <thead>
                     <tr className='text-start'>
                         <th className="text-start">ID</th>
@@ -56,11 +70,11 @@ export default function PostsTable() {
                                         </p>
                                     </td>
                                     <td className="flex">
-                                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={(e) => { e.stopPropagation(); handleOpenEditModal(post) }} >
-                                            Edit
+                                        <button className="  py-2 px-4 rounded" onClick={(e) => { e.stopPropagation(); handleOpenEditModal(post) }} >
+                                            <FiEdit></FiEdit>
                                         </button>
-                                        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={(e) => { e.stopPropagation(); handleOpenDeleteModal(post.id) }}>
-                                            Delete
+                                        <button className=" text-red-600 py-2 px-4 rounded " onClick={(e) => { e.stopPropagation(); handleOpenDeleteModal(post.id) }}>
+                                            <RiDeleteBinLine></RiDeleteBinLine>
                                         </button>
                                     </td>
                                 </tr>
