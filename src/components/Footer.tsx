@@ -5,7 +5,7 @@ import { ImEarth } from "react-icons/im"
 
 export default function Footer() {
     return <>
-        <div className="flex bg-slate-800 p-4  text-white flex-col md:flex-row gap-8" >
+        <div className="flex bg-slate-800 p-4  text-white flex-col md:flex-row gap-8 pb-16" >
 
 
             <div className="md:w-1/3 w-full p-2 md:p-12 flex flex-col gap-6 ">
@@ -78,7 +78,6 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-            <div></div>
 
         </div>
         <div className="bg-slate-900 p-6 px-12 text-slate-400 hidden md:block" >© Copyrights 2023 Logo. All Rights Reserved</div>
