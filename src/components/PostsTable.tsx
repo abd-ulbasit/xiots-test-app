@@ -9,8 +9,9 @@ import { FiEdit } from 'react-icons/fi';
 import { RiDeleteBin5Line, RiDeleteBinLine } from 'react-icons/ri';
 import { Input } from '@mantine/core';
 import { BsSearch } from 'react-icons/bs';
+import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai';
 
-const NO_OF_RECORDS_PER_PAGE = 5;
+const NO_OF_RECORDS_PER_PAGE = 4;
 
 export default function PostsTable() {
     const router = useRouter();
@@ -34,22 +35,22 @@ export default function PostsTable() {
     return (
         <div className='shadow-md p-4 border rounded-lg' >
             <div className='flex justify-between text-center p-2'>
-                <h3>Posts</h3>
+                <h3 className='font-bold text-lg' >Posts</h3>
                 <Input
                     icon={<BsSearch />}
                     placeholder="Search.."
                     radius="md"
                 />
-
             </div>
-            <hr />
-            <table className="table-auto w-full">
+            <hr className='py-2' />
+            {/* <div className="grid grid-cols-[auto,6fr,auto] gap-16"> */}
+            <table className="table-auto w-full  p-4 m-2">
                 <thead>
-                    <tr className='text-start'>
-                        <th className="text-start">ID</th>
-                        <th className="text-start">Title</th>
-                        <th className="text-start">Body</th>
-                        <th className='text-start'>Action</th>
+                    <tr className='text-start p-4 border-b'>
+                        <th className="text-start px-4 py-2 mx-2">ID</th>
+                        <th className="text-start px-4 py-2 mx-2">Title</th>
+                        <th className="text-start px-4 py-2 mx-2">Body</th>
+                        <th className='text-start px-4 py-2 mx-2'>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,23 +58,23 @@ export default function PostsTable() {
                         .slice((pagination.active - 1) * (NO_OF_RECORDS_PER_PAGE), (pagination.active) * (NO_OF_RECORDS_PER_PAGE))
                         .map((post) => {
                             return (
-                                <tr className='border cursor-pointer' key={post.id} onClick={() => gotoPostPage(post.id)}>
-                                    <td className="">{post.id}</td>
-                                    <td className="overflow-hidden">
+                                <tr className='border-b cursor-pointer' key={post.id} onClick={() => gotoPostPage(post.id)}>
+                                    <td className="px-4 py-2 mx-2">{post.id}</td>
+                                    <td className="overflow-hidden px-4 py-2 mx-2">
                                         <p className='line-clamp-1'>
                                             {post.title}
                                         </p>
                                     </td>
-                                    <td className="overflow-hidden">
+                                    <td className="overflow-hidden px-4 py-2 mx-2">
                                         <p className='line-clamp-1'>
                                             {post.body}
                                         </p>
                                     </td>
-                                    <td className="flex">
-                                        <button className="  py-2 px-4 rounded" onClick={(e) => { e.stopPropagation(); handleOpenEditModal(post) }} >
+                                    <td className="flex items-start  px-4 py-1 mx-2" >
+                                        <button className="p-4 rounded" onClick={(e) => { e.stopPropagation(); handleOpenEditModal(post) }} >
                                             <FiEdit></FiEdit>
                                         </button>
-                                        <button className=" text-red-600 py-2 px-4 rounded " onClick={(e) => { e.stopPropagation(); handleOpenDeleteModal(post.id) }}>
+                                        <button className=" text-red-600  p-4 rounded " onClick={(e) => { e.stopPropagation(); handleOpenDeleteModal(post.id) }}>
                                             <RiDeleteBinLine></RiDeleteBinLine>
                                         </button>
                                     </td>
@@ -85,20 +86,53 @@ export default function PostsTable() {
                     {openModalForDeletePost && <DeletePostModal id={openModalForDeletePost} close={setOpenModalForDeletePost} />}
                 </tbody>
             </table>
-            <div className="flex justify-center">
+            {/* </div> */}
+            <div className="flex justify-center gap-2 ">
                 <button
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    className="bg-gray-700 hover:bg-gray-800 text-white font-bold p-2 rounded-full w-10 h-10 "
                     onClick={pagination.previous}
                     disabled={pagination.active == 1}
                 >
-                    Previous
+                    <AiOutlineDoubleLeft className="ml-1"></AiOutlineDoubleLeft>
+                </button>
+                <button className={`${(pagination.active == no_of_pages) ? "block" : "hidden"} bg-gray-700 hover:bg-gray-800 text-white font-bold p-2 rounded-full w-10 h-10`}
+
+                    onClick={() => { pagination.setPage(no_of_pages - 2) }}
+                    disabled={pagination.active == 1}
+                >
+                    {pagination.active - 2}
+                </button>
+                <button className={`${!(pagination.active == 1) ? "block" : "hidden"} bg-gray-700 hover:bg-gray-800 text-white font-bold p-2 rounded-full w-10 h-10`}
+
+                    onClick={pagination.previous}
+                    disabled={pagination.active == 1}
+                >
+                    {pagination.active - 1}
+                </button>
+
+                <button className=' bg-yellow-400 hover:bg-gray-800 text-white font-bold p-2 w-10 h-10 rounded-full text-center'>
+                    {pagination.active}
+                </button>
+                <button className={`${pagination.active == no_of_pages ? "hidden" : ""} bg-gray-700 hover:bg-gray-800 text-white font-bold p-2 rounded-full w-10 h-10`}
+                    onClick={pagination.next}
+                    disabled={pagination.active == no_of_pages}
+
+                >
+                    {pagination.active + 1}
+                </button>
+                <button className={`${!(pagination.active == 1) ? "hidden" : "block"} bg-gray-700 hover:bg-gray-800 text-white font-bold p-2 rounded-full w-10 h-10`}
+                    onClick={() => { pagination.setPage(3) }}
+                    disabled={pagination.active == no_of_pages}
+                >
+
+                    {pagination.active + 2}
                 </button>
                 <button
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    className="bg-gray-700 hover:bg-gray-800 text-white font-bold p-2 rounded-full w-10 h-10 text-center"
                     onClick={pagination.next}
                     disabled={pagination.active == no_of_pages}
                 >
-                    Next
+                    <AiOutlineDoubleRight className="ml-1"></AiOutlineDoubleRight>
                 </button>
             </div>
         </div >
