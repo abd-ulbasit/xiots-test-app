@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export default function Services() {
     return (
-        <div className="pt-10">
+        <div className="py-10">
             {/* Services Headings*/}
             <div className="flex items-center flex-col p-4 gap-6 md:w-1/2 mx-auto w-full" >
                 <h2 className="text-3xl " >Our Services</h2>
