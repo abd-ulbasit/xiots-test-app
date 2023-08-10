@@ -1,4 +1,4 @@
-import { FaFacebookF, FaHome, FaInstagram, FaLinkedinIn, FaPhoneSquare, FaRegCopyright, FaTwitter, } from "react-icons/fa";
+import { FaFacebookF, FaHome, FaInstagram, FaLinkedinIn, FaPhoneSquare, FaTwitter, } from "react-icons/fa";
 import { AiOutlineFolder } from "react-icons/ai";
 import { RiMailOpenLine } from "react-icons/ri";
 import { ImEarth } from "react-icons/im"
@@ -6,8 +6,6 @@ import { ImEarth } from "react-icons/im"
 export default function Footer() {
     return <>
         <div className="flex bg-slate-800 p-4  text-white flex-col md:flex-row gap-8 pb-16" >
-
-
             <div className="md:w-1/3 w-full p-2 md:p-12 flex flex-col gap-6 ">
                 <h3 className="text-xl">
                     Logo

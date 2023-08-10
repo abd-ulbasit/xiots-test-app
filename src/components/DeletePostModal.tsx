@@ -1,12 +1,12 @@
 
 import { useDisclosure } from '@mantine/hooks';
-import { Modal, Group, Button } from '@mantine/core';
+import { Modal } from '@mantine/core';
 import React, { Dispatch, SetStateAction } from 'react';
 import { usePostsStore } from '@/store/posts';
-import { RiDeleteBin2Fill, RiDeleteBinLine } from 'react-icons/ri';
+import { RiDeleteBinLine } from 'react-icons/ri';
 
 function DeletePostModal({ id, close: closeModel }: { id: number, close: Dispatch<SetStateAction<number | null>> }) {
-    const [opened, { open, close }] = useDisclosure(false);
+    const [opened, { open }] = useDisclosure(false);
     const deletePost = usePostsStore(({ deletePost }) => deletePost)
     React.useEffect(() => {
         if (id) {

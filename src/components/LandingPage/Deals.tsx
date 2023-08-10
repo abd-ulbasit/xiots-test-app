@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 export default function Deals() {
     return <div style={{ backgroundImage: `url("/images/dealsbg.png")` }} className="bg-cover relative bg-center" >
 

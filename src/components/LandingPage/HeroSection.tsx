@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { FiChevronsRight } from "react-icons/fi"
+
 export default function HeroSection() {
     return (
         <div className="flex  flex-col items-center justify-center relative  overflow-x-hidden">

@@ -2,11 +2,10 @@ import { usePostsStore } from '@/store/posts';
 import { usePagination } from '@mantine/hooks';
 import UpdatePostModal from './UpdatePostModal';
 import { useState } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import DeletePostModal from './DeletePostModal';
 import { FiEdit } from 'react-icons/fi';
-import { RiDeleteBin5Line, RiDeleteBinLine } from 'react-icons/ri';
+import { RiDeleteBinLine } from 'react-icons/ri';
 import { Input } from '@mantine/core';
 import { BsSearch } from 'react-icons/bs';
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai';
@@ -118,7 +117,6 @@ export default function PostsTable() {
                 <button className={`${pagination.active == no_of_pages ? "hidden" : ""} bg-gray-700 hover:bg-gray-800 text-white font-bold p-2 rounded-full w-10 h-10`}
                     onClick={pagination.next}
                     disabled={pagination.active == no_of_pages}
-
                 >
                     {pagination.active + 1}
                 </button>
@@ -139,7 +137,4 @@ export default function PostsTable() {
             </div>
         </div >
     );
-
-
-
 }

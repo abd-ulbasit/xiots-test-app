@@ -1,10 +1,10 @@
 import { useDisclosure } from '@mantine/hooks';
-import { Modal, Group, Button, Textarea, Input } from '@mantine/core';
+import { Modal, Textarea, Input } from '@mantine/core';
 import React, { Dispatch, SetStateAction } from 'react';
 import { usePostsStore } from '@/store/posts';
 
 function UpdatePostModal({ post, close: closeModel }: { post: PostType, close: Dispatch<SetStateAction<PostType | null>> }) {
-    const [opened, { open, close }] = useDisclosure(false);
+    const [opened, { open }] = useDisclosure(false);
     const titleRef = React.useRef<HTMLInputElement>(null);
     const updatePost = usePostsStore(({ updatePost }) => updatePost)
     const descriptionRef = React.useRef<HTMLTextAreaElement>(null);

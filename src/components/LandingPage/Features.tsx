@@ -1,5 +1,5 @@
-
 import Image from "next/image"
+
 export default function Features() {
     return <div className="gird grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-2 md:p-12 gap-4" >
         <div className="inline-flex w-full sm:w-1/2 lg:w-1/4 sm:p-2 items-center gap-4 mx-auto self-center p-6" >
