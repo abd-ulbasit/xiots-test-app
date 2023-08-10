@@ -1,7 +1,3 @@
-import Footer from "@/components/Footer";
-import PostsFeatures from "@/components/PostPage/PostFeatures";
-import PostHero from "@/components/PostPage/PostHero";
-import PostsSideNav from "@/components/PostPage/PostsSideNav";
 import PostsLayout from "@/components/PostsLayout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { usePostsStore } from "@/store/posts";
