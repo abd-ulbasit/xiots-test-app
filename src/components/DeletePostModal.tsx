@@ -3,6 +3,7 @@ import { useDisclosure } from '@mantine/hooks';
 import { Modal, Group, Button } from '@mantine/core';
 import React, { Dispatch, SetStateAction } from 'react';
 import { usePostsStore } from '@/store/posts';
+import { RiDeleteBin2Fill, RiDeleteBinLine } from 'react-icons/ri';
 
 function DeletePostModal({ id, close: closeModel }: { id: number, close: Dispatch<SetStateAction<number | null>> }) {
     const [opened, { open, close }] = useDisclosure(false);
@@ -41,13 +42,36 @@ function DeletePostModal({ id, close: closeModel }: { id: number, close: Dispatc
     }
     return (
         <>
-            <Modal opened={opened} onClose={handleCloseModal} title="Delete Post" size={"40rem"} centered>
-                Are you sure you want to delete this post?
-                <button onClick={() => handleDeletePost(id)}>Delete</button>
-                <button onClick={handleCloseModal}>Close</button>
+            <Modal opened={opened} onClose={handleCloseModal} title={<DeleteLogo></DeleteLogo>} size={"auto"} centered
+
+            >
+                <div className='flex flex-col w-96 gap-3 ' >
+                    <div className='p-2' >
+                        <h2 className='py-2 font-bold text-lg' >
+                            Delete blog post
+                        </h2>
+                        <p className='text-gray-600' >Are you sure you want to delete this post? This action cannot be undone.</p>
+                    </div>
+                    <div className='flex gap-4 px-4' >
+                        <button onClick={handleCloseModal} className='rounded-full w-40 p-3 border font-bold' >Cancel</button>
+                        <button onClick={() => handleDeletePost(id)} className='rounded-full w-40 p-3 bg-red-400 text-white font-bold' >Delete</button>
+
+                    </div>
+                </div>
             </Modal>
 
         </>
     );
 }
 export default DeletePostModal;
+
+function DeleteLogo() {
+    return (
+        <div className='flex w-12   h-12 rounded-full bg-red-100 items-center justify-center' >
+            <div className='flex text-red-500 w-8 h-8 rounded-full bg-red-200 items-center justify-center' >
+                <RiDeleteBinLine  ></RiDeleteBinLine>
+            </div>
+
+        </div>
+    );
+}
