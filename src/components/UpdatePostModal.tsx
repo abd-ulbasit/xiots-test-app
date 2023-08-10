@@ -1,5 +1,5 @@
 import { useDisclosure } from '@mantine/hooks';
-import { Modal, Group, Button } from '@mantine/core';
+import { Modal, Group, Button, Textarea, Input } from '@mantine/core';
 import React, { Dispatch, SetStateAction } from 'react';
 import { usePostsStore } from '@/store/posts';
 
@@ -46,16 +46,17 @@ function UpdatePostModal({ post, close: closeModel }: { post: PostType, close: D
     }
     return (
         <>
-            <Modal opened={opened} onClose={handleCloseModal} title="Edit Post" size={"40rem"} centered>
-                <form onSubmit={handleEditPost}>
+            <Modal opened={opened} onClose={handleCloseModal} title={<p className='font-bold text-lg ' >Edit</p>} size={"40rem"} centered>
+                <hr />
+                <form onSubmit={handleEditPost} className='flex flex-col gap-2 pt-4' >
 
-                    <label htmlFor='title'>Title</label>
-                    <input type='text' id='title' ref={titleRef} className='p-4  border-none w-full rounded-lg'></input>
-                    <label htmlFor='description'>Description</label>
-                    <textarea id='description' rows={3} ref={descriptionRef} className='p-4  rounded-lg border-none w-full resize-none'></textarea>
-                    <button type='submit'>Update Post</button>
+                    <label htmlFor='title' className=' font-semibold' >Title</label>
+                    <Input type='text' id='title' ref={titleRef} placeholder='Enter Title'></Input>
+                    <label htmlFor='description' className=' font-semibold' >Description</label>
+                    <Textarea id='description' rows={3} ref={descriptionRef} placeholder='Enter Description'></Textarea>
+                    <button type='submit' className='rounded-full uppercase bg-yellow-400 self-start px-12 py-3 mt-2' >Update</button>
                 </form>
-            </Modal>
+            </Modal >
 
         </>
     );

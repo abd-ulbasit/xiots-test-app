@@ -44,7 +44,7 @@ export default function PostsTable() {
             </div>
             <hr className='py-2' />
             {/* <div className="grid grid-cols-[auto,6fr,auto] gap-16"> */}
-            <div className='overflow-scroll' >
+            <div className='overflow-x-scroll md:overflow-x-hidden' >
 
                 <table className="table-auto w-full  p-4 m-2 ">
                     <thead>
