@@ -1,4 +1,4 @@
-import MainNavbar from '@/components/MainNavbar'
+import MainLayout from '@/components/MainLayout'
 import '@/styles/globals.css'
 import { NextPage } from 'next'
 import type { AppProps, AppType } from 'next/app'
@@ -13,11 +13,8 @@ type AppPropsWithLayout = AppProps & {
 const MyApp: AppType<AppPropsWithLayout> = ({ Component, pageProps }) => {
   const getLayout: (page: ReactElement) => ReactNode = (Component as NextPageWithLayout).getLayout ?? ((page) => page);
 
-  return <>
-    <MainNavbar ></MainNavbar>
-    <div className='' >
-      {getLayout(<Component {...pageProps} />)}
-    </div>
-  </>
+  return <MainLayout >
+    {getLayout(<Component {...pageProps} />)}
+  </MainLayout>
 }
 export default MyApp

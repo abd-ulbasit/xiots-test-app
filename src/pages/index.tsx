@@ -15,7 +15,6 @@ export default function Home() {
       <Deals />
       <Services />
       <BookNow />
-      <Footer />
     </main>
   )
 }
