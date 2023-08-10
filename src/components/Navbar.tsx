@@ -111,7 +111,7 @@ export default function Navbar() {
                     </div>
                 </div>
             </nav>
-            <ul className="md:flex hidden flex-row px-6 w-full h-16 items-center gap-3 bg-slate-800 ">
+            <ul className="md:flex hidden flex-row px-6 w-full h-16 items-center gap-3 bg-slate-800 text-white ">
                 <li className={` ${isCurrentPage('/') ? 'text-yellow-400' : ''}`}>
                     <Link href="/" className="hover:text-gray-300 md:mx-4 block">
                         Home

@@ -88,7 +88,7 @@ export default function PostsTable() {
                     </tbody>
                 </table>
             </div>
-            <div className="flex justify-center gap-2 ">
+            <div className="flex justify-center gap-2 my-8 ">
                 <button
                     className="bg-gray-700 hover:bg-gray-800 text-white font-bold p-2 rounded-full w-10 h-10 "
                     onClick={pagination.previous}
