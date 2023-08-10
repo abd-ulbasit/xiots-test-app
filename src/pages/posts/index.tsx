@@ -5,6 +5,8 @@ import { NextPageWithLayout } from "../_app";
 import PostsLayout from "@/components/PostsLayout";
 import PostHero from "@/components/PostPage/PostHero";
 import PostsSideNav from "@/components/PostPage/PostsSideNav";
+import Footer from "@/components/Footer";
+import PostsFeatures from "@/components/PostPage/PostFeatures";
 
 const Index: NextPageWithLayout = () => {
     const posts = usePostsStore(({ posts }) => posts)
@@ -12,14 +14,16 @@ const Index: NextPageWithLayout = () => {
         <div>
             <PostHero></PostHero>
             <div className="flex p-16 px-24 gap-6 items-center justify-center" >
-                <div className="w-1/5">
+                <div className="hidden md:block w-1/5">
 
                     <PostsSideNav></PostsSideNav>
                 </div>
-                <div className="w-4/5" >
+                <div className="md:w-4/5 w-full" >
                     <PostsTable></PostsTable>
                 </div>
             </div>
+            <PostsFeatures></PostsFeatures>
+            <Footer></Footer>
         </div>
     );
 }

@@ -33,7 +33,7 @@ export default function PostsTable() {
         router.push(`/posts/${id}`)
     }
     return (
-        <div className='shadow-md p-4 border rounded-lg' >
+        <div className='shadow-md p-4 border rounded-lg ' >
             <div className='flex justify-between text-center p-2'>
                 <h3 className='font-bold text-lg' >Posts</h3>
                 <Input
@@ -44,49 +44,51 @@ export default function PostsTable() {
             </div>
             <hr className='py-2' />
             {/* <div className="grid grid-cols-[auto,6fr,auto] gap-16"> */}
-            <table className="table-auto w-full  p-4 m-2">
-                <thead>
-                    <tr className='text-start p-4 border-b'>
-                        <th className="text-start px-4 py-2 mx-2">ID</th>
-                        <th className="text-start px-4 py-2 mx-2">Title</th>
-                        <th className="text-start px-4 py-2 mx-2">Body</th>
-                        <th className='text-start px-4 py-2 mx-2'>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {posts
-                        .slice((pagination.active - 1) * (NO_OF_RECORDS_PER_PAGE), (pagination.active) * (NO_OF_RECORDS_PER_PAGE))
-                        .map((post) => {
-                            return (
-                                <tr className='border-b cursor-pointer' key={post.id} onClick={() => gotoPostPage(post.id)}>
-                                    <td className="px-4 py-2 mx-2">{post.id}</td>
-                                    <td className="overflow-hidden px-4 py-2 mx-2">
-                                        <p className='line-clamp-1'>
-                                            {post.title}
-                                        </p>
-                                    </td>
-                                    <td className="overflow-hidden px-4 py-2 mx-2">
-                                        <p className='line-clamp-1'>
-                                            {post.body}
-                                        </p>
-                                    </td>
-                                    <td className="flex items-start  px-4 py-1 mx-2" >
-                                        <button className="p-4 rounded" onClick={(e) => { e.stopPropagation(); handleOpenEditModal(post) }} >
-                                            <FiEdit></FiEdit>
-                                        </button>
-                                        <button className=" text-red-600  p-4 rounded " onClick={(e) => { e.stopPropagation(); handleOpenDeleteModal(post.id) }}>
-                                            <RiDeleteBinLine></RiDeleteBinLine>
-                                        </button>
-                                    </td>
-                                </tr>
+            <div className='overflow-scroll' >
 
-                            )
-                        })}
-                    {openModalForEditPost && <UpdatePostModal post={openModalForEditPost} close={setOpenModalForEditPost} />}
-                    {openModalForDeletePost && <DeletePostModal id={openModalForDeletePost} close={setOpenModalForDeletePost} />}
-                </tbody>
-            </table>
-            {/* </div> */}
+                <table className="table-auto w-full  p-4 m-2 ">
+                    <thead>
+                        <tr className='text-start p-4 border-b'>
+                            <th className="text-start px-4 py-2 mx-2">ID</th>
+                            <th className="text-start px-4 py-2 mx-2">Title</th>
+                            <th className="text-start px-4 py-2 mx-2">Body</th>
+                            <th className='text-start px-4 py-2 mx-2'>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {posts
+                            .slice((pagination.active - 1) * (NO_OF_RECORDS_PER_PAGE), (pagination.active) * (NO_OF_RECORDS_PER_PAGE))
+                            .map((post) => {
+                                return (
+                                    <tr className='border-b cursor-pointer' key={post.id} onClick={() => gotoPostPage(post.id)}>
+                                        <td className="px-4 py-2 mx-2">{post.id}</td>
+                                        <td className="overflow-hidden px-4 py-2 mx-2">
+                                            <p className='line-clamp-1'>
+                                                {post.title}
+                                            </p>
+                                        </td>
+                                        <td className="overflow-hidden px-4 py-2 mx-2">
+                                            <p className='line-clamp-1'>
+                                                {post.body}
+                                            </p>
+                                        </td>
+                                        <td className="flex items-start  px-4 py-1 mx-2" >
+                                            <button className="p-4 rounded" onClick={(e) => { e.stopPropagation(); handleOpenEditModal(post) }} >
+                                                <FiEdit></FiEdit>
+                                            </button>
+                                            <button className=" text-red-600  p-4 rounded " onClick={(e) => { e.stopPropagation(); handleOpenDeleteModal(post.id) }}>
+                                                <RiDeleteBinLine></RiDeleteBinLine>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                )
+                            })}
+                        {openModalForEditPost && <UpdatePostModal post={openModalForEditPost} close={setOpenModalForEditPost} />}
+                        {openModalForDeletePost && <DeletePostModal id={openModalForDeletePost} close={setOpenModalForDeletePost} />}
+                    </tbody>
+                </table>
+            </div>
             <div className="flex justify-center gap-2 ">
                 <button
                     className="bg-gray-700 hover:bg-gray-800 text-white font-bold p-2 rounded-full w-10 h-10 "
